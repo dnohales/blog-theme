@@ -18,63 +18,44 @@
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom" />
   {% endif %}
-  {% if FEED_ALL_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS" />
-  {% endif %}
 
   {% block head %}
   {% endblock %}
 
   <title>
-    {{ SITENAME }}
-    {% block title %}{% endblock %}
+    {% block title %}{{ SITENAME }}{% endblock %}
   </title>
 
   {% include "modules/analytics.html" %}
 </head>
 
 <body>
-  <aside>
-    <div id="user_meta">
-      <a href="{{ SITEURL }}">
-        {% if USER_LOGO_URL %}
-        <img src="{{ USER_LOGO_URL }}" alt="logo">
-        {% else %}
-        <img src="{{ SITEURL }}/theme/images/logo.png" alt="logo">
-        {% endif %}
-      </a>
-      <h2><a href="{{ SITEURL }}">{{ AUTHOR }}</a></h2>
-      <p>{{ TAGLINE }}</p>
-      <ul>
-        {% for title, link in MENUITEMS %}
-        <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU %}{% for p in pages %}
-        <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-        {% endfor %}{% endif %}
-        {% for name, link in LINKS %}
-        <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
-        {% endfor %}
-        {% for name, link in SOCIAL %}
-        <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-  </aside>
-
   <main>
     <header>
-      <p>
-      <a href="{{ SITEURL }}">Index</a> &brvbar; <a href="{{ SITEURL }}/archives.html">Archives</a>
-      {% if FEED_ALL_ATOM %}
-      &brvbar; <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">Atom</a>
-      {% endif %}
-      {% if FEED_ALL_RSS %}
-      &brvbar; <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}">RSS</a>
-      {% endif %}
-      {% block header %}
-      {% endblock header %}
-      </p>
+      <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+      <ul>
+        <li>
+          <a href="{{ SITEURL }}/archives.html">Archives</a>
+        </li>
+        <li>
+          <a href="{{ SITEURL }}/tags.html">Tags</a>
+        </li>
+        {% for name, link in SOCIAL %}
+          <li>
+          {% if name == 'github' %}
+            <a href="{{ link }}" target="_blank">
+              <img alt="My GitHub profile" title="My GitHub profile" src="{{ SITEURL }}/images/github_24.png" />
+            </a>
+          {% elif name == 'google-plus' %}
+            <a href="{{ link }}" target="_blank">
+              <img alt="My Google+ profile" title="My Google+ profile" src="{{ SITEURL }}/images/google-plus_24.png" />
+            </a>
+          {% else %}
+            <a href="{{ link }}" target="_blank">{{ name }}</a>
+          {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
     </header>
 
     {% block content %}
@@ -84,7 +65,8 @@
     {% endblock %}
 
     <div id="ending_message">
-      <p>&copy; {{ AUTHOR }}. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. {% if INTERNET_DEFENSE_LEAGUE %}Member of the <a href="http://internetdefenseleague.org">Internet Defense League</a>.{% endif %}</p>
+      <p>&copy; {{ AUTHOR }}.</p>
+      <p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. This <a href="https://github.com/eagleoneraptor/blog-theme" target="_blank">theme</a> is based on Giulio Fidente's <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">svbhack</a>.</p>
     </div>
   </main>
   {% include "modules/idl.html" %}

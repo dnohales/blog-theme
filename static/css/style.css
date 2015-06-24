@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  color: #4d4d4d;
+  color: #2b2b2b;
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
 }
@@ -19,48 +19,50 @@ hr {
 img {
   max-width: 100%;
 }
-aside div#user_meta {
-  padding: 40px;
-  text-align: center;
-}
-aside div#user_meta h2 {
-  margin: 15px 0 5px 0;
-}
-aside div#user_meta p {
-  margin: 0 0 15px 0;
-  font-size: 14px;
-}
-aside div#user_meta ul {
-  margin: 40px 0 0 0;
-  padding-left: 0;
-  font-size: 16px;
-  list-style-type: none;
-}
-aside div#user_meta ul li {
-  display: inline;
-  line-height: 3em;
-}
-aside div#user_meta ul li a {
-  padding: 5px 15px 5px 15px;
-  border: 3px solid #eeeeee;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  color: #999999;
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 main header {
-  padding: 40px;
+  padding: 30px 40px;
   border-top: #eeeeee 1px solid;
   border-bottom: #eeeeee 1px solid;
 }
-main header p {
-  font-weight: bold;
-  font-size: 10px;
-  text-transform: uppercase;
+main header h1 {
+  text-align: center;
+  margin: 0;
+}
+main header h1 a {
+  color: #2b2b2b;
+}
+main header ul {
+  text-align: center;
+  padding: 0;
+}
+main header ul li {
+  list-style-type: none;
+  display: inline;
+  margin-left: 20px;
+}
+main header ul li:first-child {
+  margin-left: 0;
+}
+main header ul img {
+  vertical-align: middle;
+  border: none;
 }
 main article {
   max-width: 640px;
   padding: 40px;
+}
+main article div.article_title {
+  text-align: center;
+}
+main article div.article_date {
+  text-align: center;
+  color: #999999;
+  margin-bottom: 40px;
 }
 main article div.article_text {
   line-height: 1.375em;
@@ -72,19 +74,19 @@ main article div.article_text code {
   margin: 2px;
   padding: 0;
   color: #000000;
-  font-size: 14px;
+  font-size: 0.8em;
   font-family: 'PT Mono', monospace;
   background: #eeeeee;
 }
 main article div.article_text pre {
   margin: 22px 2px 22px 2px;
-  padding: 2px;
+  padding: 10px 15px;
   color: #000000;
   border-left: 3px solid #0e94ec;
-  font-size: 14px;
+  font-size: 0.8em;
   font-family: 'PT Mono', monospace;
   background: #eeeeee;
-  line-height: 1.125em;
+  line-height: 1.4em;
   overflow-x: auto;
 }
 main article div.article_text blockquote {
@@ -93,12 +95,31 @@ main article div.article_text blockquote {
   color: #999999;
   font-style: italic;
 }
+main article div.article_text img {
+  border: solid 1px #999999;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 main article div.gist {
   line-height: .875em;
 }
 main article div.article_meta {
-  font-size: 12px;
-  color: #999999;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #eeeeee;
+  font-size: 0.8em;
+}
+main article div.article_meta:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+main article div.article_meta p:first-child {
+  float: left;
+}
+main article div.article_meta p:last-child {
+  float: right;
 }
 main footer {
   border-top: #eeeeee 1px solid;
@@ -124,41 +145,35 @@ main footer a.button_accent:active {
 }
 main div#ending_message {
   border-top: #eeeeee 1px solid;
-  padding: 0 40px 0 40px;
+  text-align: center;
   color: #999999;
-  font-size: 10px;
+  font-size: 0.8em;
 }
-@media screen and (min-width: 1024px) {
-  aside {
-    width: 25%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-right: #eeeeee 1px solid;
-  }
-  aside h2 {
-    margin: 10px 0 0 0;
-  }
-  aside div#user_meta {
-    max-width: 192px;
-    text-align: right;
-  }
-  aside div#user_meta ul li {
-    display: block;
-  }
+main div#ending_message a {
+  color: #4d4d4d;
+}
+@media screen and (min-width: 768px) {
   main {
-    width: 75%;
-    position: absolute;
-    top: 0;
-    left: 25%;
     overflow-x: hidden;
     overflow-y: hidden;
   }
   main article {
-    max-width: 640px;
+    max-width: 740px;
+    margin: 0 auto;
   }
   main header {
     border-top: 0;
+  }
+  main header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  main header h1 {
+    float: left;
+  }
+  main header ul {
+    margin: 11px 0 0 0;
+    float: right;
   }
 }

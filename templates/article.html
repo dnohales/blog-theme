@@ -3,23 +3,31 @@
 <meta name="keywords" content="{{ article.tags|join(', ')  }}">
 {% endblock %}
 
-{% block title %}&ndash; {{ article.title }}{% endblock %}
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
 
 {% block content %}
 <article>
   <div class="article_title">
-    <h3><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+    <h1>{{ article.title }}</h1>
+  </div>
+  <div class="article_date">
+    <p>{{ article.locale_date }}</p>
   </div>
   <div class="article_text">
     {{ article.content }}
   </div>
   <div class="article_meta">
-    <p>Posted on: {{ article.locale_date }}</p>
-    <p>Category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-      {% if article.tags %} &ndash; Tags:
+    <p>
+      Tags:
       {% for tag in article.tags %}
-      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+      {% else %}
+        <em>None</em>
       {% endfor %}
+    </p>
+    <p>
+      {% if GITHUB_REPO_URL %}
+        <a href="{{ GITHUB_REPO_URL }}/edit/master/{{ article.get_relative_source_path() }}">Suggest changes to this article</a>
       {% endif %}
     </p>
   </div>
